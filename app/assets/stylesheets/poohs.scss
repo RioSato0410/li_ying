@@ -4,8 +4,7 @@
 .pooh{
 }
 .samune{
-    background: #e761c3;
-    background-image: url("../images/event1.jpg");
+    background-image: url('<%= @pooh.image %>');
     height: 200px;
     flex-shrink: 0;
     display: flex;
@@ -36,6 +35,7 @@
     flex-shrink: 0;
 }
 .seibun{
+    margin: 10px;
     height: 250px;
     flex-shrink: 0;
     text-align:center;
@@ -104,4 +104,23 @@
 }
 .recipe{
 
+}
+
+label {
+    margin-right: 5px; /* ボタン同士の間隔 */
+}
+label input {
+    display: none; /* デフォルトのinputは非表示にする */
+}
+label span {
+    color: #333; /* 文字色を黒に */
+    font-size: 14px; /* 文字サイズを14pxに */
+    border: 1px solid #333; /* 淵の線を指定 */
+    border-radius: 20px; /* 角丸を入れて、左右が丸いボタンにする */
+    padding: 5px 20px; /* 上下左右に余白をトル */
+}
+label input:checked + span {
+    color: #FFF; /* 文字色を白に */
+    background: #FBB; /* 背景色を薄い赤に */
+    border: 1px solid #FBB; /* 淵の線を薄い赤に */
 }

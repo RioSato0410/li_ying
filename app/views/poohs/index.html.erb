@@ -6,15 +6,11 @@
       <%= image_tag t.image_url, size: "250x200" if t.image? %>
       <%= t.user.email %>
         <%= t.food_name %>
-        
-        
         <%= link_to "詳細へ", pooh_path(t.id) %>
         <%= link_to "編集する", edit_pooh_path(t.id) %>
         <%= button_to "削除する", pooh_path(t.id), method: :delete %>
     </div>
   <% end %>
-
-
 <% else %>
  
   <h1>効能一覧</h1>
@@ -54,7 +50,12 @@
     <% Tag.where(category:"女性系").each do |t| %>
       <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
     <% end %>
+    <p>女性系</p>
+    <label><input type="checkbox" value="いぬ" name="animal"><span>いぬ</span></label>
+    <label><input type="checkbox" value="さる" name="animal"><span>さる</span></label>
+    <label><input type="checkbox" value="きじ" name="animal"><span>きじ</span></label>
    <%= submit_tag '検索' %>
+
   <% end %>
   
   <%= link_to"診断はこちら",new_perfume_path,class:"get" %>
