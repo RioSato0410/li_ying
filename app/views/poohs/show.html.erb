@@ -1,0 +1,47 @@
+<h3>食材の詳細</h3>
+<div class="pooh">
+
+  <div class="samune">
+    <div class="name">
+      <%= @pooh.food_name %>
+    </div>
+  </div>
+
+  <div class="set">
+   <div class="image">
+   </div>
+
+   <div class="seibun">
+   <p><%= @pooh.gi_value %></p>
+   <p><%= @pooh.energy %></p>
+   <p><%= @pooh.protein %></p>
+   <p><%= @pooh.lipid %></p>
+   <p><%= @pooh.carbo %></p>
+   <p><%= @pooh.salt %></p>
+   </div>
+  </div>
+
+  <div class="effect">
+   <p><%= @pooh.effect %></p>
+  </div>
+  <a href="#" class="effect">BUTTON</a>
+
+  <div class="treat">
+   <%= simple_format(@pooh.treat) %>
+   <p></p>
+  </div>
+
+  <div class="recipe">
+   <p><%= @pooh.recipe %></p>
+  </div>
+
+</div>
+
+<% if user_signed_in? %>
+    <% if current_user.admin? %>
+      <%= link_to "編集する", edit_pooh_path(@pooh.id) %>
+
+    <% end %>
+  <% end %>
+
+<%= link_to "食材一覧に戻る", poohs_path %>

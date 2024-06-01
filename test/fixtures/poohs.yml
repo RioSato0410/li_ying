@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  energy: MyString
+  protein: MyString
+  lipid: MyString
+  carbo: MyString
+  salt: MyString
+  effect: MyText
+  treat: MyText
+  recipe: MyText
+  image: MyString
+  user_id: 1
+  food_name: MyString
+  gi_value: MyString
+
+two:
+  energy: MyString
+  protein: MyString
+  lipid: MyString
+  carbo: MyString
+  salt: MyString
+  effect: MyText
+  treat: MyText
+  recipe: MyText
+  image: MyString
+  user_id: 1
+  food_name: MyString
+  gi_value: MyString

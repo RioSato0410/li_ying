@@ -1,0 +1,85 @@
+<h1>Winnie_the_Pooh</h1>
+<h3>新規食材</h3>
+
+<%= form_for @pooh do |f| %>
+
+  <div class='form-group'>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+            <div class='form-check'>
+                <%= tag.label class: 'form-check-label' do %>
+                    <%= tag.check_box class: 'form-check-input' %>
+                    <%= tag.text %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+
+    
+
+<div class="field">
+<%= f.label :food_name %>
+<%= f.text_field :food_name, :size => 30 %>
+</div>
+
+<span class="image-top">
+        <%= f.label :サムネイル %>
+        <%= f.file_field :image %>
+      </span>
+
+<div class="field">
+<%= f.label :gi_value %>
+<%= f.text_field :gi_value, :size => 30 %>
+</div>
+
+ <div class="field">
+    <%= f.label :energy %>
+    <%= f.text_field :energy, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :protein %>
+    <%= f.text_field :protein, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lipid %>
+    <%= f.text_field :lipid, :size => 30 %>
+  </div>
+
+  <div class="field">
+  <%= f.label :carbo %>
+  <%= f.text_field :carbo, :size => 30 %>
+</div>
+
+<div class="field">
+<%= f.label :salt %>
+<%= f.text_field :salt, :size => 30 %>
+</div>
+
+# データ型がintegerで数字のみを入力するフォーム
+  <div class="field">
+    <%= f.label :user_id  %>
+    <%= f.number_field :user_id, :size => 10 %>
+  </div>
+
+# データ型がtextで自由記述の入力フォーム
+  <div class="field">
+    <%= f.label :recipe  %>
+    <%= f.text_area :recipe, :size => "30x2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :treat  %>
+    <%= f.text_area :treat, :size => "140x10" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :effect  %>
+    <%= f.text_area :effect, :size => "30x2" %>
+  </div>
+
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", poohs_path %>
+

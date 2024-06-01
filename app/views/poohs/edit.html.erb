@@ -1,0 +1,41 @@
+<%= form_for @pooh do |f| %>
+    <%= f.label :食べ物の名前 %>
+    <%= f.text_field :food_name, :size => 140 %>
+
+    <%= f.label :画像 %>
+    <%= f.file_field :image %>
+
+    <div class='form-group'>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <div class='form-check'>
+            <%= tag.label class: 'form-check-label' do %>
+                <%= tag.check_box class: 'form-check-input' %>
+                <%= tag.text %>
+            <% end %>
+        </div>
+    <% end %>
+</div>
+    <%= f.label :GI値 %>
+    <%= f.text_field :gi_value, :size => 140 %> 
+    <%= f.label :熱量 %>
+    <%= f.text_field :energy, :size => 140 %>
+    <%= f.label :タンパク質 %> 
+    <%= f.text_field :protein, :size => 140 %> 
+    <%= f.label :脂質 %>
+    <%= f.text_field :lipid, :size => 140 %> 
+    <%= f.label :炭水化物 %>
+    <%= f.text_field :carbo, :size => 140 %> 
+    <%= f.label :食塩相当量 %>
+    <%= f.text_field :salt, :size => 140 %>
+
+    <%= f.label :効能 %> 
+    <%= f.text_field :effect, :size => 140 %> 
+    <%= f.label :調理法・保存方法 %>
+    <%= f.text_area :treat, :size => "140x10" %> 
+    <%= f.label :レシピ %>
+    <%= f.text_area :recipe, :size => "30x2" %> 
+    
+    <%= f.submit "編集する" %>
+  <% end %>
+
+ 

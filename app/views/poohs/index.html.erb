@@ -1,0 +1,74 @@
+<% if params[:tag_ids] %>
+  <h1>食材一覧</h1>
+  <% @poohs.each do |t| %>
+    <div class="pooh">
+    
+      <%= image_tag t.image_url, size: "250x200" if t.image? %>
+      <%= t.user.email %>
+        <%= t.food_name %>
+        
+        
+        <%= link_to "詳細へ", pooh_path(t.id) %>
+        <%= link_to "編集する", edit_pooh_path(t.id) %>
+        <%= button_to "削除する", pooh_path(t.id), method: :delete %>
+    </div>
+  <% end %>
+
+
+<% else %>
+ 
+  <h1>効能一覧</h1>
+  <% if user_signed_in? %>
+    <% if current_user.admin? %>
+      <%= link_to "新規投稿へ", new_pooh_path %>
+
+
+      <%= form_tag({controller:"poohs",action:"index"}, method: :get) do %>
+      <%= text_field_tag :tag %>
+      <%= select_tag  "category", raw("<option>美容系</option><option>痛み系</option><option>体力系</option><option>精神系</option><option>女性系</option>")%>
+      <%= submit_tag 'タグを追加' %>
+      <% end %>
+    <% end %>
+  <% end %>
+    
+  <%= form_tag({controller:"poohs",action:"index"}, method: :get) do %>
+    美容系
+
+    <% Tag.where(category:"美容系").each do |t| %>
+      <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+    <% end %>
+    
+    痛み系
+    <% Tag.where(category:"痛み系").each do |t| %>
+     <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+    <% end %>
+    体力系
+    <% Tag.where(category:"体力系").each do |t| %>
+     <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+    <% end %>
+    精神系
+    <% Tag.where(category:"精神系").each do |t| %>
+      <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+    <% end %>
+    女性系
+    <% Tag.where(category:"女性系").each do |t| %>
+      <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+    <% end %>
+   <%= submit_tag '検索' %>
+  <% end %>
+  
+  <%= link_to"診断はこちら",new_perfume_path,class:"get" %>
+  
+
+<% end %>
+
+<% if user_signed_in? %>
+<%= button_to 'ログアウト', destroy_user_session_path,method: :delete %>
+
+<% else %>
+
+
+<%= link_to "ログイン", new_user_session_path %>
+<%= link_to "新規登録", new_user_registration_path %>
+<% end %>
+</div>
