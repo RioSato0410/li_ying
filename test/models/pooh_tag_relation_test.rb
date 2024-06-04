@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TweetTagRelationTest < ActiveSupport::TestCase
+class PoohTagRelationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_21_112239) do
+ActiveRecord::Schema.define(version: 2024_06_02_003003) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2024_05_21_112239) do
     t.string "question4"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pooh_tag_relations", force: :cascade do |t|
+    t.integer "pooh_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pooh_id"], name: "index_pooh_tag_relations_on_pooh_id"
+    t.index ["tag_id"], name: "index_pooh_tag_relations_on_tag_id"
   end
 
   create_table "poohs", force: :cascade do |t|
@@ -97,6 +106,8 @@ ActiveRecord::Schema.define(version: 2024_05_21_112239) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "pooh_tag_relations", "poohs"
+  add_foreign_key "pooh_tag_relations", "tags"
   add_foreign_key "tweet_tag_relations", "poohs"
   add_foreign_key "tweet_tag_relations", "tags"
 end

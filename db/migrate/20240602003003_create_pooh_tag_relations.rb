@@ -1,6 +1,6 @@
-class CreateTweetTagRelations < ActiveRecord::Migration[6.1]
+class CreatePoohTagRelations < ActiveRecord::Migration[6.1]
   def change
-    create_table :tweet_tag_relations do |t|
+    create_table :pooh_tag_relations do |t|
       t.references :pooh, null: false, foreign_key: true
       t.references :tag, null: false, foreign_key: true
 

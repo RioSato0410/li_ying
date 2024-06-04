@@ -1,0 +1,22 @@
+databases:
+  - name: li_ying_DB
+    databaseName: li_ying
+    user: li_ying_user
+    region: singapore
+
+services:
+  - type: web
+    name: li_ying
+    env: ruby
+    region: singapore
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: li_ying_DB
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+

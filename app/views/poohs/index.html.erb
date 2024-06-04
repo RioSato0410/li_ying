@@ -28,48 +28,102 @@
   <% end %>
     
   <%= form_tag({controller:"poohs",action:"index"}, method: :get) do %>
-    美容系
 
-    <% Tag.where(category:"美容系").each do |t| %>
-      <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
-    <% end %>
-    
-    痛み系
-    <% Tag.where(category:"痛み系").each do |t| %>
-     <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
-    <% end %>
-    体力系
-    <% Tag.where(category:"体力系").each do |t| %>
-     <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
-    <% end %>
-    精神系
-    <% Tag.where(category:"精神系").each do |t| %>
-      <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
-    <% end %>
-    女性系
-    <% Tag.where(category:"女性系").each do |t| %>
-      <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
-    <% end %>
-    <p>女性系</p>
-    <label><input type="checkbox" value="いぬ" name="animal"><span>いぬ</span></label>
-    <label><input type="checkbox" value="さる" name="animal"><span>さる</span></label>
-    <label><input type="checkbox" value="きじ" name="animal"><span>きじ</span></label>
-   <%= submit_tag '検索' %>
+    <div class="biyou">
+      <div class="biyouname">
+        美容系
+      </div>
+      <div class="biyoutag">
+        <% Tag.where(category:"美容系").each do |t| %>
+          <label class="tag">
+          <li><%= check_box :tag_ids, t.name %>
+          <span>
+          <%= t.name %>
+          </span>
+          </li>
+          </label>
+        <% end %>
+      </div>
+    </div>
 
+    <div class="itami">
+      <div class="itaminame">
+       痛み系
+      </div>
+      <div class="itamitag">
+        <% Tag.where(category:"痛み系").each do |t| %>
+          <label class="tag">
+          <li><%= check_box :tag_ids, t.name %>
+          <span>
+          <%= t.name %>
+          </span>
+          </li>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tairyoku">
+      <div class="tairyokuname">
+        体力系
+      </div>
+      <div class="tairyokutag">
+        <% Tag.where(category:"体力系").each do |t| %>
+          <label class="tag">
+          <li><%= check_box :tag_ids, t.name %>
+          <span>
+          <%= t.name %>
+          </span>
+          </li>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="seishin">
+      <div class="seishinname">
+        精神系
+      </div>
+      <div class="seishintag">
+        <% Tag.where(category:"精神系").each do |t| %>
+          <label class="tag">
+          <li><%= check_box :tag_ids, t.name %>
+          <span>
+          <%= t.name %>
+          </span>
+          </li>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="zyosei">
+      <div class="zyoseiname">
+        女性系
+      </div>
+      <div class="zyoseitag">
+        <% Tag.where(category:"女性系").each do |t| %>
+          <label class="tag">
+          <li><%= check_box :tag_ids, t.name %>
+          <span>
+          <%= t.name %>
+          </span>
+          </li>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <%= submit_tag '検索' %>
   <% end %>
   
   <%= link_to"診断はこちら",new_perfume_path,class:"get" %>
   
-
 <% end %>
 
 <% if user_signed_in? %>
-<%= button_to 'ログアウト', destroy_user_session_path,method: :delete %>
-
+  <%= button_to 'ログアウト', destroy_user_session_path,method: :delete %>
 <% else %>
-
-
-<%= link_to "ログイン", new_user_session_path %>
-<%= link_to "新規登録", new_user_registration_path %>
+  <%= link_to "ログイン", new_user_session_path %>
+  <%= link_to "新規登録", new_user_registration_path %>
 <% end %>
-</div>

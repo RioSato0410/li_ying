@@ -3,21 +3,18 @@ class PoohsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
     def index
         @poohs = Pooh.all
-
-    if params[:tag]
-      Tag.create(name: params[:tag], category: params[:category])
-
-    end
-
-    if params[:tag_ids]
-      @poohs = []
-      params[:tag_ids].each do |key, value|      
-        @poohs += Tag.find_by(name: key).poohs if value == "1"
+      if params[:tag]
+        Tag.create(name: params[:tag], category: params[:category])
       end
-      @poohs.uniq!
-      @poohs = Pooh.all
+
+      if params[:tag_ids]
+        @poohs = []
+        params[:tag_ids].each do |key, value|      
+          @poohs += Tag.find_by(name: key).poohs if value == "1"
+        end
+        @poohs.uniq!
+      end
     end
-  end
 
     def new
         @pooh = Pooh.new
